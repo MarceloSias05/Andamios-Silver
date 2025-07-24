@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, ShoppingCart } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ carrito = [], productosEnCarrito = {} }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   const menuItems = [
     { name: "INICIO", href: "/", type: "route" },
-    { name: "PRODUCTOS", href: "#productos", type: "anchor" },
+    { name: "PRODUCTOS", href: "/productos", type: "route" },
     { name: "PROYECTOS", href: "/proyectos", type: "route" },
     { name: "INSTALACIÓN", href: "#instalacion", type: "anchor" },
     { name: "CONTACTO", href: "#contacto", type: "anchor" },
@@ -75,7 +75,7 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Contact Info & CTA */}
+          {/* Contact Info & Cart */}
           <div className="hidden lg:flex items-center space-x-6">
             <div className="flex items-center space-x-4 text-sm">
               <a 
@@ -90,9 +90,42 @@ const Header = () => {
                 <span className="font-medium">81 1280 6115</span>
               </a>
             </div>
-            <Button variant="secondary" size="lg" className="shadow-glow">
-              COTIZAR AHORA
-            </Button>
+            
+            {/* Carrito llamativo */}
+            <div className="relative">
+              <Button 
+                variant="secondary" 
+                size="lg" 
+                onClick={() => navigate('/carrito')}
+                className="shadow-glow hover:shadow-golden transition-all duration-300 group relative overflow-hidden cursor-pointer"
+              >
+                <div className="flex items-center space-x-2">
+                  <div className="relative">
+                    <ShoppingCart className="w-5 h-5 group-hover:animate-bounce" />
+                    {carrito.length > 0 && (
+                      <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold animate-pulse">
+                        {carrito.length}
+                      </div>
+                    )}
+                  </div>
+                  <div className="flex flex-col items-start">
+                    <span className="text-xs font-medium">
+                      {carrito.length > 0 ? `${carrito.length} productos` : 'Carrito'}
+                    </span>
+                    {carrito.length > 0 && (
+                      <span className="text-xs font-bold text-golden">
+                        ${carrito.reduce((total, item) => total + item.subtotal, 0).toFixed(2)}
+                      </span>
+                    )}
+                  </div>
+                </div>
+                
+                {/* Efecto de brillo cuando hay productos */}
+                {carrito.length > 0 && (
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse"></div>
+                )}
+              </Button>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -134,8 +167,39 @@ const Header = () => {
                   <span>81 1280 6115</span>
                 </a>
               </div>
-              <Button variant="secondary" size="lg" className="w-full mt-4 shadow-glow">
-                COTIZAR AHORA
+              
+              {/* Carrito móvil */}
+              <Button 
+                variant="secondary" 
+                size="lg" 
+                onClick={() => navigate('/carrito')}
+                className="w-full mt-4 shadow-glow relative overflow-hidden group cursor-pointer"
+              >
+                <div className="flex items-center justify-center space-x-2">
+                  <div className="relative">
+                    <ShoppingCart className="w-5 h-5 group-hover:animate-bounce" />
+                    {carrito.length > 0 && (
+                      <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold animate-pulse">
+                        {carrito.length}
+                      </div>
+                    )}
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <span className="font-medium">
+                      {carrito.length > 0 ? `CARRITO (${carrito.length})` : 'CARRITO VACÍO'}
+                    </span>
+                    {carrito.length > 0 && (
+                      <span className="text-sm font-bold text-golden">
+                        ${carrito.reduce((total, item) => total + item.subtotal, 0).toFixed(2)}
+                      </span>
+                    )}
+                  </div>
+                </div>
+                
+                {/* Efecto de brillo cuando hay productos */}
+                {carrito.length > 0 && (
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse"></div>
+                )}
               </Button>
             </div>
           </div>

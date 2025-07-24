@@ -1,12 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Star, CheckCircle } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const ProductsSection = () => {
+  const navigate = useNavigate();
+
   const productCategories = [
     {
       title: "MARCOS",
       icon: "🏗️",
+      image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=400&h=300&fit=crop&crop=center",
       products: [
         "MARCO ESTÁNDAR",
         "MARCO DE PASILLO", 
@@ -21,6 +25,7 @@ const ProductsSection = () => {
     {
       title: "CRUCETAS Y TABLONES",
       icon: "✕",
+      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop&crop=center",
       products: [
         "CRUCETA SERVICIO",
         "CRUCETA PASILLO",
@@ -32,6 +37,7 @@ const ProductsSection = () => {
     {
       title: "SEGURIDAD",
       icon: "🛡️",
+      image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=300&fit=crop&crop=center",
       products: [
         "BARANDAL PROTECCIÓN",
         "VIGA",
@@ -43,6 +49,7 @@ const ProductsSection = () => {
     {
       title: "ACCESORIOS",
       icon: "⚙️",
+      image: "https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=400&h=300&fit=crop&crop=center",
       products: [
         "BASE REGULABLE",
         "TORNILLOS BASE",
@@ -81,41 +88,53 @@ const ProductsSection = () => {
                 category.featured ? 'ring-2 ring-steel/20' : ''
               }`}
             >
-              {category.featured && (
-                <div className="absolute top-4 right-4 bg-gradient-primary text-navy text-xs font-bold px-3 py-1 rounded-full">
-                  MÁS VENDIDO
-                </div>
-              )}
-              
-              <CardContent className="p-8">
-                <div className="text-center mb-8">
-                  <div className="text-6xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
-                    {category.icon}
+              <CardContent className="p-0">
+                {/* Imagen del producto */}
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src={category.image} 
+                    alt={category.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/20 to-transparent"></div>
+                  <div className="absolute top-4 left-4">
+                    <div className="text-3xl">{category.icon}</div>
                   </div>
-                  <h3 className="text-2xl font-bold text-navy mb-2 group-hover:text-golden transition-colors">
-                    {category.title}
-                  </h3>
-                  <div className="w-16 h-0.5 bg-golden mx-auto rounded-full"></div>
-                </div>
-
-                <div className="space-y-3 mb-8">
-                  {category.products.map((product, productIndex) => (
-                    <div key={productIndex} className="flex items-center space-x-3">
-                      <CheckCircle className="w-4 h-4 text-steel flex-shrink-0" />
-                      <span className="text-sm font-medium text-foreground">
-                        {product}
-                      </span>
+                  {category.featured && (
+                    <div className="absolute top-4 right-4 bg-gradient-primary text-navy text-xs font-bold px-3 py-1 rounded-full">
+                      MÁS VENDIDO
                     </div>
-                  ))}
+                  )}
+                  <div className="absolute bottom-4 left-4">
+                    <h3 className="text-xl font-bold text-white mb-1">
+                      {category.title}
+                    </h3>
+                    <div className="w-12 h-0.5 bg-golden rounded-full"></div>
+                  </div>
                 </div>
 
-                <Button 
-                  variant="outline" 
-                  className="w-full group-hover:bg-golden group-hover:text-navy group-hover:border-golden group-hover:shadow-glow transition-all duration-300"
-                >
-                  VER DETALLES
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
+                {/* Contenido */}
+                <div className="p-6">
+                  <div className="space-y-3 mb-6">
+                    {category.products.map((product, productIndex) => (
+                      <div key={productIndex} className="flex items-center space-x-3">
+                        <CheckCircle className="w-4 h-4 text-steel flex-shrink-0" />
+                        <span className="text-sm font-medium text-foreground">
+                          {product}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <Button 
+                    variant="outline" 
+                    onClick={() => navigate("/productos")}
+                    className="w-full group-hover:bg-golden group-hover:text-navy group-hover:border-golden group-hover:shadow-glow transition-all duration-300"
+                  >
+                    VER DETALLES
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           ))}

@@ -64,9 +64,9 @@ const Hero = () => {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="hero" size="xl" className="group">
-                VER PRODUCTOS
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <Button variant="hero" size="xl" className="group" onClick={() => window.location.href = '/productos'}>
+              VER PRODUCTOS
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button variant="contact" size="xl">
                 COTIZAR PROYECTO

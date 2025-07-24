@@ -27,8 +27,7 @@ const InstallationSection = () => {
           <div className="relative">
             <div className="bg-muted/30 rounded-lg p-8 h-96 flex items-center justify-center">
               <div className="text-center">
-                <div className="text-6xl text-golden mb-4">🏗️</div>
-                <p className="text-muted-foreground">Imagen de instrucciones de montaje</p>
+                <img src="./src/assets/construccion.jpg" alt="Instrucciones de montaje" />
               </div>
             </div>
             

@@ -3,10 +3,12 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useCarrito } from "@/hooks/useCarrito";
 import tacopalenque from '../assets/taco_palenque.png';
 
 const Proyectos = () => {
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("Todos");
+  const { carrito, productosEnCarrito } = useCarrito();
 
 const proyectos = [
     {
@@ -113,7 +115,7 @@ const proyectos = [
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <Header />
+      <Header carrito={carrito} productosEnCarrito={productosEnCarrito} />
 
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-navy via-navy to-blue-900 text-white py-20 mt-20">
