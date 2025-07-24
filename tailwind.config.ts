@@ -53,9 +53,19 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 				golden: {
-					DEFAULT: 'hsl(var(--golden))',
-					light: 'hsl(var(--golden-light))',
-					dark: 'hsl(var(--golden-dark))'
+					DEFAULT: 'hsl(var(--silver))',
+					light: 'hsl(var(--silver-light))',
+					dark: 'hsl(var(--silver-dark))'
+				},
+				silver: {
+					DEFAULT: 'hsl(var(--silver))',
+					light: 'hsl(var(--silver-light))',
+					dark: 'hsl(var(--silver-dark))'
+				},
+				steel: {
+					DEFAULT: 'hsl(var(--steel-blue))',
+					light: 'hsl(var(--steel-blue-light))',
+					dark: 'hsl(var(--steel-blue-dark))'
 				},
 				navy: {
 					DEFAULT: 'hsl(var(--navy))',
@@ -89,7 +99,9 @@ export default {
 				'soft': 'var(--shadow-soft)',
 				'medium': 'var(--shadow-medium)',
 				'large': 'var(--shadow-large)',
-				'golden': 'var(--shadow-golden)',
+				'golden': 'var(--shadow-steel)',
+				'steel': 'var(--shadow-steel)',
+				'silver': 'var(--shadow-silver)',
 				'glow': 'var(--shadow-glow)'
 			},
 			transitionProperty: {
@@ -111,8 +123,8 @@ export default {
 					'50%': { transform: 'translateY(-10px)' }
 				},
 				'pulse-glow': {
-					'0%, 100%': { boxShadow: '0 0 20px hsl(var(--golden) / 0.3)' },
-					'50%': { boxShadow: '0 0 40px hsl(var(--golden) / 0.6)' }
+					'0%, 100%': { boxShadow: '0 0 20px hsl(var(--steel-blue) / 0.3)' },
+					'50%': { boxShadow: '0 0 40px hsl(var(--steel-blue) / 0.6)' }
 				},
 				'slide-up': {
 					'0%': { transform: 'translateY(20px)', opacity: '0' },

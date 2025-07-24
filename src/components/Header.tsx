@@ -1,16 +1,43 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Phone, Mail } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const menuItems = [
-    { name: "INICIO", href: "#inicio" },
-    { name: "PRODUCTOS", href: "#productos" },
-    { name: "INSTALACIÓN", href: "#instalacion" },
-    { name: "CONTACTO", href: "#contacto" },
+    { name: "INICIO", href: "/", type: "route" },
+    { name: "PRODUCTOS", href: "#productos", type: "anchor" },
+    { name: "PROYECTOS", href: "/proyectos", type: "route" },
+    { name: "INSTALACIÓN", href: "#instalacion", type: "anchor" },
+    { name: "CONTACTO", href: "#contacto", type: "anchor" },
   ];
+
+  const handleMenuClick = (item: { name: string; href: string; type: string }) => {
+    if (item.type === "route") {
+      navigate(item.href);
+    } else {
+      // Para enlaces de ancla, primero navegar a la página principal si no estamos ahí
+      if (window.location.pathname !== "/") {
+        navigate("/");
+        // Esperar un poco para que la página cargue antes de hacer scroll
+        setTimeout(() => {
+          const element = document.querySelector(item.href);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+          }
+        }, 100);
+      } else {
+        const element = document.querySelector(item.href);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    }
+    setIsMenuOpen(false);
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-glass backdrop-blur-md border-b border-white/10">
@@ -37,28 +64,31 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
             {menuItems.map((item) => (
-              <a
+              <button
                 key={item.name}
-                href={item.href}
-                className="text-navy hover:text-golden font-semibold transition-all duration-300 relative group"
+                onClick={() => handleMenuClick(item)}
+                className="text-navy hover:text-golden font-semibold transition-all duration-300 relative group bg-transparent border-none cursor-pointer"
               >
                 {item.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-primary transition-all duration-300 group-hover:w-full"></span>
-              </a>
+              </button>
             ))}
           </nav>
 
           {/* Contact Info & CTA */}
           <div className="hidden lg:flex items-center space-x-6">
             <div className="flex items-center space-x-4 text-sm">
-              <div className="flex items-center space-x-2 text-navy">
+              <a 
+                href="tel:+528112806115" 
+                className="flex items-center space-x-2 text-navy hover:text-golden transition-colors duration-300 cursor-pointer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.open('tel:+528112806115', '_self');
+                }}
+              >
                 <Phone className="w-4 h-4 text-golden" />
-                <span className="font-medium">442-123-4567</span>
-              </div>
-              <div className="flex items-center space-x-2 text-navy">
-                <Mail className="w-4 h-4 text-golden" />
-                <span className="font-medium">info@andamiossilver.com</span>
-              </div>
+                <span className="font-medium">81 1280 6115</span>
+              </a>
             </div>
             <Button variant="secondary" size="lg" className="shadow-glow">
               COTIZAR AHORA
@@ -81,26 +111,28 @@ const Header = () => {
           <div className="container mx-auto px-4 py-6">
             <nav className="space-y-4">
               {menuItems.map((item) => (
-                <a
+                <button
                   key={item.name}
-                  href={item.href}
-                  className="block text-navy hover:text-golden font-semibold py-3 px-4 rounded-xl hover:bg-white/10 transition-all duration-300"
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={() => handleMenuClick(item)}
+                  className="block w-full text-left text-navy hover:text-golden font-semibold py-3 px-4 rounded-xl hover:bg-white/10 transition-all duration-300 bg-transparent border-none cursor-pointer"
                 >
                   {item.name}
-                </a>
+                </button>
               ))}
             </nav>
             <div className="mt-6 pt-6 border-t border-white/20">
               <div className="space-y-3 text-sm text-navy">
-                <div className="flex items-center space-x-2">
+                <a 
+                  href="tel:+528112806115" 
+                  className="flex items-center space-x-2 hover:text-golden transition-colors duration-300 cursor-pointer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.open('tel:+528112806115', '_self');
+                  }}
+                >
                   <Phone className="w-4 h-4 text-golden" />
-                  <span>442-123-4567</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Mail className="w-4 h-4 text-golden" />
-                  <span>info@andamiossilver.com</span>
-                </div>
+                  <span>81 1280 6115</span>
+                </a>
               </div>
               <Button variant="secondary" size="lg" className="w-full mt-4 shadow-glow">
                 COTIZAR AHORA

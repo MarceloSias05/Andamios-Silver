@@ -20,26 +20,35 @@ All colors MUST be HSL.
     --primary: 222 25% 12%;
     --primary-foreground: 0 0% 98%;
 
-    --secondary: 45 93% 47%;
-    --secondary-foreground: 222 25% 12%;
+    --secondary: 210 50% 45%;
+    --secondary-foreground: 0 0% 98%;
 
     --muted: 210 20% 94%;
     --muted-foreground: 215 16% 47%;
 
-    --accent: 45 93% 47%;
-    --accent-foreground: 222 25% 12%;
+    --accent: 210 50% 45%;
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 214 32% 91%;
     --input: 214 32% 91%;
-    --ring: 45 93% 47%;
+    --ring: 210 50% 45%;
 
     /* Modern design tokens */
-    --golden: 45 93% 47%;
-    --golden-light: 45 93% 65%;
-    --golden-dark: 45 93% 35%;
+    --silver: 0 0% 70%;
+    --silver-light: 0 0% 85%;
+    --silver-dark: 0 0% 55%;
+    --steel-blue: 210 50% 45%;
+    --steel-blue-light: 210 50% 60%;
+    --steel-blue-dark: 210 50% 30%;
+    
+    /* Legacy golden variables (mapped to steel/silver) */
+    --golden: 210 50% 45%;
+    --golden-light: 210 50% 60%;
+    --golden-dark: 210 50% 30%;
+    
     --navy: 222 25% 12%;
     --navy-light: 222 25% 25%;
     --navy-dark: 222 25% 8%;
@@ -47,17 +56,23 @@ All colors MUST be HSL.
     --glass-border: 0 0% 100% / 0.2;
     
     /* Premium gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(45 93% 47%) 0%, hsl(45 93% 65%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(222 25% 12%) 0%, hsl(222 25% 25%) 50%, hsl(222 25% 8%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(210 20% 98%) 100%);
-    --gradient-glass: linear-gradient(145deg, hsl(0 0% 100% / 0.15) 0%, hsl(0 0% 100% / 0.05) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(0, 0%, 90%) 0%, hsl(210, 50%, 45%) 50%, hsl(0, 0%, 75%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(222 25% 12%) 0%, hsl(210, 50%, 45%) 30%, hsl(0, 0%, 85%) 70%, hsl(222 25% 8%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(210, 50%, 96%) 50%, hsl(0, 0%, 90%) 100%);
+    --gradient-glass: linear-gradient(145deg, hsl(210 50% 45% / 0.15) 0%, hsl(0 0% 70% / 0.05) 100%);
+    --gradient-silver: linear-gradient(135deg, hsl(0, 0%, 95%) 0%, hsl(210, 50%, 60%) 25%, hsl(0, 0%, 85%) 50%, hsl(210, 50%, 45%) 75%, hsl(0, 0%, 80%) 100%);
+    --gradient-steel: linear-gradient(135deg, hsl(210, 50%, 60%) 0%, hsl(0, 0%, 75%) 25%, hsl(210, 50%, 45%) 50%, hsl(0, 0%, 85%) 75%, hsl(210, 50%, 30%) 100%);
     
     /* Premium shadows */
     --shadow-soft: 0 4px 6px -1px hsl(222 25% 12% / 0.1), 0 2px 4px -1px hsl(222 25% 12% / 0.06);
     --shadow-medium: 0 10px 15px -3px hsl(222 25% 12% / 0.1), 0 4px 6px -2px hsl(222 25% 12% / 0.05);
     --shadow-large: 0 25px 50px -12px hsl(222 25% 12% / 0.25);
-    --shadow-golden: 0 20px 40px -12px hsl(45 93% 47% / 0.3);
-    --shadow-glow: 0 0 50px hsl(45 93% 47% / 0.4);
+    --shadow-silver: 0 20px 40px -12px hsl(0 0% 70% / 0.3);
+    --shadow-steel: 0 20px 40px -12px hsl(210 50% 45% / 0.3);
+    --shadow-glow: 0 0 50px hsl(210 50% 45% / 0.4);
+    
+    /* Legacy golden shadow (mapped to steel) */
+    --shadow-golden: 0 20px 40px -12px hsl(210 50% 45% / 0.3);
     
     /* Smooth transitions */
     --transition-all: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);

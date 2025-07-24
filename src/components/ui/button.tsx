@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-semibold ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-semibold ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-steel focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
@@ -15,12 +15,12 @@ const buttonVariants = cva(
         outline:
           "border-2 border-navy/20 bg-background shadow-soft hover:bg-navy hover:text-primary-foreground hover:border-navy hover:shadow-medium",
         secondary:
-          "bg-gradient-primary text-navy font-bold shadow-golden hover:shadow-glow transform hover:scale-[1.02]",
+          "bg-gradient-primary text-navy font-bold shadow-steel hover:shadow-glow transform hover:scale-[1.02]",
         ghost: "hover:bg-muted hover:text-foreground",
-        link: "text-navy underline-offset-4 hover:underline hover:text-golden",
-        hero: "bg-gradient-primary text-navy font-bold shadow-golden hover:shadow-glow transform hover:scale-105 hover:-translate-y-1 transition-all duration-500",
-        contact: "border-2 border-golden bg-gradient-glass backdrop-blur-sm text-golden font-bold hover:bg-golden hover:text-navy hover:shadow-glow transform hover:scale-105 transition-all duration-300",
-        premium: "bg-gradient-hero text-primary-foreground font-bold shadow-large hover:shadow-glow transform hover:scale-[1.02] border border-golden/20"
+        link: "text-navy underline-offset-4 hover:underline hover:text-steel",
+        hero: "bg-gradient-primary text-navy font-bold shadow-steel hover:shadow-glow transform hover:scale-105 hover:-translate-y-1 transition-all duration-500",
+        contact: "border-2 border-steel bg-gradient-glass backdrop-blur-sm text-steel font-bold hover:bg-steel hover:text-white hover:shadow-glow transform hover:scale-105 transition-all duration-300",
+        premium: "bg-gradient-hero text-primary-foreground font-bold shadow-large hover:shadow-glow transform hover:scale-[1.02] border border-steel/20"
       },
       size: {
         default: "h-11 px-6 py-3",

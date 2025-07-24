@@ -77,8 +77,8 @@ const ProductsSection = () => {
           {productCategories.map((category, index) => (
             <Card 
               key={index} 
-              className={`group relative overflow-hidden border-2 hover:border-golden/30 transition-all duration-500 hover:shadow-large ${
-                category.featured ? 'ring-2 ring-golden/20' : ''
+              className={`group relative overflow-hidden border-2 hover:border-steel/30 transition-all duration-500 hover:shadow-large ${
+                category.featured ? 'ring-2 ring-steel/20' : ''
               }`}
             >
               {category.featured && (
@@ -101,7 +101,7 @@ const ProductsSection = () => {
                 <div className="space-y-3 mb-8">
                   {category.products.map((product, productIndex) => (
                     <div key={productIndex} className="flex items-center space-x-3">
-                      <CheckCircle className="w-4 h-4 text-golden flex-shrink-0" />
+                      <CheckCircle className="w-4 h-4 text-steel flex-shrink-0" />
                       <span className="text-sm font-medium text-foreground">
                         {product}
                       </span>
