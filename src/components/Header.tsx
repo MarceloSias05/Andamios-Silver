@@ -11,8 +11,6 @@ const Header = ({ carrito = [], productosEnCarrito = {} }) => {
     { name: "INICIO", href: "/", type: "route" },
     { name: "PRODUCTOS", href: "/productos", type: "route" },
     { name: "PROYECTOS", href: "/proyectos", type: "route" },
-    { name: "INSTALACIÓN", href: "#instalacion", type: "anchor" },
-    { name: "CONTACTO", href: "#contacto", type: "anchor" },
   ];
 
   const handleMenuClick = (item: { name: string; href: string; type: string }) => {

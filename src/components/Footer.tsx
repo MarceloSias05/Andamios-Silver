@@ -1,5 +1,6 @@
 import { Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -88,9 +89,9 @@ const Footer = () => {
       <footer className="bg-gray-800 text-white py-4 text-center">
         <p>© 2025 <b>Andamios Silver</b>. Derechos Reservados.</p>
         <div className="mt-2 space-x-4">
-          <a href="/proyectos" className="text-blue-400 hover:underline">Nuestros Proyectos</a>
-          <a href="/aviso-privacidad" className="text-blue-400 hover:underline">Aviso de Privacidad</a>
-          <a href="/terminos-condiciones" className="text-blue-400 hover:underline">Términos y Condiciones</a>
+          <Link to="/proyectos" className="text-blue-400 hover:underline">Nuestros Proyectos</Link>
+          <Link to="/aviso-privacidad" className="text-blue-400 hover:underline">Aviso de Privacidad</Link>
+          <Link to="/terminos-condiciones" className="text-blue-400 hover:underline">Términos y Condiciones</Link>
         </div>
       </footer>
     </>

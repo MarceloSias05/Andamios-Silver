@@ -1,10 +1,28 @@
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  
-  # Handle client-side routing
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . /index.html [L]
+# Habilitar URL rewriting
+Options -MultiViews
+RewriteEngine On
+
+# Manejar rutas de React Router (client-side routing)
+# Si el archivo o directorio no existe, redirigir a index.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !=/favicon.ico
+RewriteRule ^ index.html [QSA,L]
+
+# Configurar headers de seguridad
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options nosniff
+  Header always set X-Frame-Options DENY
+  Header always set X-XSS-Protection "1; mode=block"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Configurar tipos MIME
+<IfModule mod_mime.c>
+  AddType application/javascript .js
+  AddType text/css .css
+  AddType image/svg+xml .svg
+  AddType application/json .json
 </IfModule>
 
 # Cache static assets
@@ -17,6 +35,9 @@
   ExpiresByType image/jpeg "access plus 1 year"
   ExpiresByType image/gif "access plus 1 year"
   ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/ico "access plus 1 year"
+  ExpiresByType text/html "access plus 0 seconds"
 </IfModule>
 
 # Compress files
@@ -30,4 +51,19 @@
   AddOutputFilterByType DEFLATE application/rss+xml
   AddOutputFilterByType DEFLATE application/javascript
   AddOutputFilterByType DEFLATE application/x-javascript
+  AddOutputFilterByType DEFLATE application/json
 </IfModule>
+
+# Configurar errores personalizados
+ErrorDocument 404 /index.html
+
+# Bloquear acceso a archivos sensibles
+<Files ".env">
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Files ".htaccess">
+    Order allow,deny
+    Deny from all
+</Files>
