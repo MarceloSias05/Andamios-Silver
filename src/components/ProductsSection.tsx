@@ -2,38 +2,51 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
 const ProductsSection = () => {
-  const products = [
+  const productCategories = [
     {
-      title: "BASTIDOR",
-      description: "Para el uso de la construcción, haciendo accesible llegar a un punto de altura y hacer eficiente el trabajo del usuario, dándole SEGURIDAD Y CONFIANZA",
-      specifications: [
-        "Diseñado con los estándares de calidad de tubo calibre 14",
-        "Cedula 30",
-        "Candado de seguridad fabricado en tubo galvanizado",
-        "Cold Rolled de 5/8",
-        "2.00 mts. De alto",
-        "1.20 Ancho",
-        "2.50 de apertura"
-      ],
-      image: "🏗️"
+      title: "MARCOS",
+      icon: "🏗️",
+      products: [
+        "MARCO ESTÁNDAR",
+        "MARCO DE PASILLO", 
+        "MARCO PARA ESCALERA",
+        "MARCO EXTENSIÓN",
+        "MARCO CIMBRA ESTÁNDAR",
+        "MARCO CIMBRA EXTENSIÓN",
+        "PUNTAL"
+      ]
     },
     {
-      title: "CRUCETA",
-      description: "Se usan para que los andamios tengan la apertura según el tamaño del marco de andamio.",
-      specifications: [
-        "Cruceta de 3.00 mts. de largo",
-        "Apertura de 2.50 mts"
-      ],
-      image: "✕"
+      title: "CRUCETAS Y TABLONES",
+      icon: "✕",
+      products: [
+        "CRUCETA SERVICIO",
+        "CRUCETA PASILLO",
+        "CRUCETA CIMBRA", 
+        "CRUCETA EXTENSIÓN",
+        "TABLÓN ANTIDERRAPANTE"
+      ]
     },
     {
-      title: "TABLÓN",
-      description: "Cubierta hecha de malla con soportes de tubo reforzado para mayor seguridad y resistencia",
-      specifications: [
-        "Tablón de 2.50 metros. de largo",
-        "0.38 metros. de ancho"
-      ],
-      image: "📐"
+      title: "SEGURIDAD",
+      icon: "🛡️",
+      products: [
+        "BARANDAL PROTECCIÓN",
+        "VIGA",
+        "CONECTOR",
+        "ESCALERA",
+        "PASAMANOS"
+      ]
+    },
+    {
+      title: "ACCESORIOS",
+      icon: "⚙️",
+      products: [
+        "BASE REGULABLE",
+        "TORNILLOS BASE",
+        "TORNILLO U",
+        "RUEDA PARA ANDAMIO"
+      ]
     }
   ];
 
@@ -42,33 +55,29 @@ const ProductsSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-navy">BASTIDOR</span>{" "}
-            <span className="text-golden">→</span>{" "}
-            <span className="text-navy">CRUCETA</span>{" "}
-            <span className="text-golden">→</span>{" "}
-            <span className="text-navy">TABLÓN</span>
+            <span className="text-navy">NUESTROS</span>{" "}
+            <span className="text-golden">PRODUCTOS</span>
           </h2>
-          <div className="h-1 w-24 bg-golden mx-auto"></div>
+          <div className="h-1 w-24 bg-golden mx-auto mb-4"></div>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Catálogo completo de productos para andamios con los más altos estándares de calidad y seguridad
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((product, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {productCategories.map((category, index) => (
             <Card key={index} className="group hover:shadow-lg transition-shadow duration-300 border-2 hover:border-golden/20">
               <CardContent className="p-8">
                 <div className="text-center mb-6">
-                  <div className="text-6xl mb-4 text-golden">{product.image}</div>
-                  <h3 className="text-2xl font-bold text-navy mb-4">{product.title}</h3>
+                  <div className="text-6xl mb-4 text-golden">{category.icon}</div>
+                  <h3 className="text-2xl font-bold text-navy mb-4">{category.title}</h3>
                 </div>
 
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  {product.description}
-                </p>
-
                 <div className="space-y-3 mb-8">
-                  {product.specifications.map((spec, specIndex) => (
-                    <div key={specIndex} className="flex items-start space-x-2">
-                      <span className="text-golden mt-1">▶</span>
-                      <span className="text-sm text-foreground">{spec}</span>
+                  {category.products.map((product, productIndex) => (
+                    <div key={productIndex} className="flex items-start space-x-3">
+                      <span className="text-golden mt-1 font-bold">▶</span>
+                      <span className="text-sm font-medium text-foreground">{product}</span>
                     </div>
                   ))}
                 </div>
@@ -87,11 +96,45 @@ const ProductsSection = () => {
                 </div>
 
                 <Button variant="outline" className="w-full hover:bg-golden hover:text-navy hover:border-golden">
-                  MAS INFORMACIÓN
+                  VER DETALLES
                 </Button>
               </CardContent>
             </Card>
           ))}
+        </div>
+
+        {/* Featured Products Section */}
+        <div className="mt-20">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-bold text-navy mb-4">Productos Destacados</h3>
+            <div className="h-1 w-20 bg-golden mx-auto"></div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
+              <div className="text-center">
+                <div className="text-4xl mb-3 text-golden">🏗️</div>
+                <h4 className="font-bold text-navy mb-2">MARCO ESTÁNDAR</h4>
+                <p className="text-sm text-muted-foreground">Base fundamental para cualquier estructura de andamio</p>
+              </div>
+            </div>
+            
+            <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
+              <div className="text-center">
+                <div className="text-4xl mb-3 text-golden">🛡️</div>
+                <h4 className="font-bold text-navy mb-2">BARANDAL PROTECCIÓN</h4>
+                <p className="text-sm text-muted-foreground">Seguridad máxima para trabajos en altura</p>
+              </div>
+            </div>
+            
+            <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
+              <div className="text-center">
+                <div className="text-4xl mb-3 text-golden">📐</div>
+                <h4 className="font-bold text-navy mb-2">TABLÓN ANTIDERRAPANTE</h4>
+                <p className="text-sm text-muted-foreground">Superficie segura y antideslizante</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
